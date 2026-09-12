@@ -1,4 +1,4 @@
-import pytest
+﻿import pytest
 import pandas as pd
 import numpy as np
 from trading_bot.risk.risk_engine import RiskEngine
@@ -23,7 +23,7 @@ def test_execution_idempotency_retry():
     class DummyClient:
         pass
     engine = ExecutionEngine(exchange_adapter=DummyClient(), dry_run=True)
-    signal = {'symbol': 'ETH/USDT', 'side': 'BUY', 'timestamp': 1700000000}
+    signal = {'symbol': 'ETH/USDT', 'side': 'BUY', 'timestamp': int(__import__('time').time())}
     
     res1 = engine.execute_order(signal)
     assert res1['status'] == 'FILLED'
@@ -36,3 +36,4 @@ def test_execution_idempotency_retry():
 def test_invalid_configuration_handling():
     with pytest.raises(Exception):
         _ = ExchangeAdapter(exchange_id='non_existent_exchange_id_12345', sandbox=True)
+

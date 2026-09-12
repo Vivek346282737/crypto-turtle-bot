@@ -1,4 +1,4 @@
-import pytest
+﻿import pytest
 from trading_bot.execution.engine import ExecutionEngine
 
 class DummyExchange:
@@ -8,7 +8,7 @@ def test_execution_idempotency_and_duplicate_prevention():
     adapter = DummyExchange()
     engine = ExecutionEngine(exchange_adapter=adapter, dry_run=True)
     
-    signal = {'symbol': 'BTC/USDT', 'side': 'BUY', 'timestamp': 1700000000}
+    signal = {'symbol': 'BTC/USDT', 'side': 'BUY', 'timestamp': int(__import__('time').time())}
     
     # First execution should succeed
     result1 = engine.execute_order(signal)
@@ -18,3 +18,4 @@ def test_execution_idempotency_and_duplicate_prevention():
     result2 = engine.execute_order(signal)
     assert result2['status'] == 'REJECTED'
     assert result2['reason'] == 'Duplicate signal'
+
