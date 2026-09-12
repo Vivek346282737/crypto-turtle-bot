@@ -1,7 +1,10 @@
-﻿.env
-turtle_key.pem
+.env
+*.pem
+*.key
+vendors/
 venv/
 __pycache__/
+*.pyc
 *.csv
 *.log
 .DS_Store
