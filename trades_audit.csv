@@ -1,0 +1,2 @@
+Timestamp,Symbol,Side,Action,Price,Amount,PnL,Balance,EV,Reason
+2026-09-12 11:44:21,BTC/USDT,SELL,OPEN,77209.94,0.0292,0,998.96,0.52,REGIME_ENTRY
