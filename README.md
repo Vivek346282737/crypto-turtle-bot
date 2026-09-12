@@ -27,8 +27,7 @@ graph TD
     G --> H[Execution Engine]
     H --> I[Portfolio / Position Management]
     I --> J[Monitoring / Audit]
-`
-
+``n
 ## Quick Start
 `powershell
 python -m venv venv
