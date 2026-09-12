@@ -1,4 +1,4 @@
-﻿import ccxt
+import ccxt
 import os
 from typing import Dict, Any
 
@@ -25,10 +25,10 @@ class ExchangeAdapter:
         try:
             return self.client.fetch_ticker(symbol)
         except Exception as e:
-            raise ConnectionError(f""Failed to fetch ticker for {symbol}: {str(e)}"")
+            raise ConnectionError(f"Failed to fetch ticker for {symbol}: {str(e)}")
 
     def fetch_balance(self) -> Dict[str, Any]:
         try:
             return self.client.fetch_balance()
         except Exception as e:
-            raise ConnectionError(f""Failed to fetch account balance: {str(e)}"")
+            raise ConnectionError(f"Failed to fetch account balance: {str(e)}")
