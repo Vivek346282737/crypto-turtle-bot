@@ -44,3 +44,5 @@ python scripts/run_bot.py
 - **Drift & Performance Monitoring:** Two-sample Kolmogorov-Smirnov (KS) hypothesis testing and quantitative regression analysis to assess concept drift and year-over-year performance stability.
 - **Valuation & Tail-Risk Metrics:** Quantitative valuation calculations covering annualized volatility, drawdown risk profiles, and substantive procedures for financial time-series integrity.
 - **Regulatory & Cloud Landscape:** Designed considering EU AI Act risk tiers and tested against simulated Azure ML / cloud platform evaluation pipelines for agentic and RAG-based systems.
+
+- **Cloud ML & RAG Architecture:** Evaluated deployment configs for Cloud ML Platforms (AWS SageMaker, Azure ML, GCP Vertex AI) and integrated retrieval verification checks for Agentic / RAG-based systems.

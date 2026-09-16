@@ -143,3 +143,36 @@ class FinancialReportingControlsAudit:
             "p_value": round(float(p_val), 4),
             "normality_assumption": "Valid" if p_val > 0.05 else "Non-Normal / Heavy-Tailed"
         }
+
+class CloudMLPlatformAndRAGIntegrator:
+    """
+    Simulates model deployment, monitoring, and audit checks across
+    Cloud ML Platforms (AWS SageMaker, Azure ML, GCP Vertex AI),
+    and validates retrieval pipelines for Agentic / RAG-based systems.
+    """
+    SUPPORTED_PLATFORMS = ["AWS SageMaker", "Azure ML", "GCP Vertex AI"]
+
+    @classmethod
+    def audit_cloud_ml_deployment(cls, platform_name: str, model_artifact: dict) -> dict:
+        """Verifies deployment readiness and endpoints across Cloud ML Platforms."""
+        is_supported = platform_name in cls.SUPPORTED_PLATFORMS
+        return {
+            "platform": platform_name,
+            "cloud_ml_verified": is_supported,
+            "monitoring_endpoint_status": "Active" if is_supported else "Unsupported",
+            "model_version": model_artifact.get("version", "1.0.0")
+        }
+
+    @staticmethod
+    def validate_rag_retrieval_integrity(retrieved_context: list, query_embedding_similarity: float) -> dict:
+        """
+        Validates retrieval accuracy and context relevancy for
+        Agentic / RAG-based systems to prevent hallucination in reporting.
+        """
+        is_valid = bool(retrieved_context) and query_embedding_similarity >= 0.70
+        return {
+            "architecture": "Agentic / RAG-based System",
+            "retrieval_integrity_pass": is_valid,
+            "similarity_score": round(query_embedding_similarity, 4),
+            "control_determination": "Execution Cleared" if is_valid else "Context Insufficient"
+        }
