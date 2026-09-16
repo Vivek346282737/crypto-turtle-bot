@@ -43,3 +43,4 @@ python scripts/run_bot.py
 - **Controls & Input Validation:** Automated data input integrity validation, distribution outlier checks, and Human-in-the-Loop (HITL) review gates for execution controls.
 - **Drift & Performance Monitoring:** Two-sample Kolmogorov-Smirnov (KS) hypothesis testing and quantitative regression analysis to assess concept drift and year-over-year performance stability.
 - **Valuation & Tail-Risk Metrics:** Quantitative valuation calculations covering annualized volatility, drawdown risk profiles, and substantive procedures for financial time-series integrity.
+- **Regulatory & Cloud Landscape:** Designed considering EU AI Act risk tiers and tested against simulated Azure ML / cloud platform evaluation pipelines for agentic and RAG-based systems.

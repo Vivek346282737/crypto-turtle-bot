@@ -112,3 +112,34 @@ class ValuationAndAnalyticsAuditor:
             "model_reliability_index": 0.94,
             "substantive_testing_result": "PASS"
         }
+
+class FinancialReportingControlsAudit:
+    """
+    Implements controls testing for ICFR and COSO frameworks,
+    supporting substantive procedures over AI-driven accounting estimates
+    and automated transaction reconciliations.
+    """
+    @staticmethod
+    def test_icfr_substantive_reconciliations(ledger_entries: list, model_estimates: list) -> dict:
+        """
+        Substantive testing procedures over automated journal entries and
+        accounting estimates derived from machine learning models.
+        """
+        discrepancies = [abs(a - b) for a, b in zip(ledger_entries, model_estimates) if abs(a - b) > 1e-4]
+        coso_control_pass = len(discrepancies) == 0
+        return {
+            "framework_scope": "COSO & ICFR Internal Controls",
+            "substantive_testing_result": "Satisfactory" if coso_control_pass else "Audit Exception",
+            "variance_count": len(discrepancies),
+            "reconciliation_status": "Reconciled" if coso_control_pass else "Material Deviation"
+        }
+
+    @staticmethod
+    def evaluate_probability_distribution(returns_series: pd.Series) -> dict:
+        """Evaluates probability distributions and normality assumptions for valuation estimates."""
+        shapiro_stat, p_val = stats.shapiro(returns_series.dropna()[:100])
+        return {
+            "distribution_test": "Shapiro-Wilk Probability Test",
+            "p_value": round(float(p_val), 4),
+            "normality_assumption": "Valid" if p_val > 0.05 else "Non-Normal / Heavy-Tailed"
+        }
