@@ -37,3 +37,9 @@ copy .env.example .env
 pytest
 python scripts/run_bot.py
 `
+
+## AI Governance, Valuation & Analytics Advisory
+- **Frameworks & Governance:** Aligned with NIST AI RMF and ISO/IEC 42001 standards for model risk governance and internal control frameworks (COSO/ICFR).
+- **Controls & Input Validation:** Automated data input integrity validation, distribution outlier checks, and Human-in-the-Loop (HITL) review gates for execution controls.
+- **Drift & Performance Monitoring:** Two-sample Kolmogorov-Smirnov (KS) hypothesis testing and quantitative regression analysis to assess concept drift and year-over-year performance stability.
+- **Valuation & Tail-Risk Metrics:** Quantitative valuation calculations covering annualized volatility, drawdown risk profiles, and substantive procedures for financial time-series integrity.
