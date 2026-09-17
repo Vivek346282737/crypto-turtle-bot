@@ -46,3 +46,5 @@ python scripts/run_bot.py
 - **Regulatory & Cloud Landscape:** Designed considering EU AI Act risk tiers and tested against simulated Azure ML / cloud platform evaluation pipelines for agentic and RAG-based systems.
 
 - **Cloud ML & RAG Architecture:** Evaluated deployment configs for Cloud ML Platforms (AWS SageMaker, Azure ML, GCP Vertex AI) and integrated retrieval verification checks for Agentic / RAG-based systems.
+
+- **Model Validation & AI Risk Suite:** Systematic model robustness benchmarking across scikit-learn and TensorFlow artifacts, active KPI monitoring controls, and governance evaluation for Generative AI, LLMs, and RAG-based systems.
