@@ -14,37 +14,24 @@ Crypto Turtle Bot is a systematic quantitative trading framework engineered for 
 - **Regime Detection:** Automated classification of market states (Trend Up, Trend Down, Range).
 - **Backtesting Engine:** Realistic performance simulation incorporating fees and slippage.
 - **Automated CI/CD & Testing:** Full pytest unit test suite and GitHub Actions workflow.
+- **Trend & Volatility Filters:** 200 EMA macro-trend alignment and ADX-based chop suppression ($ADX \ge 22$) to filter false breakouts during low-volatility ranges.
+- **Chandelier ATR Dynamic Trailing:** Ratchet stop-loss mechanisms driven by $2.5 \times ATR$ offsets trailing from highest/lowest trade marks to protect unrealized profits.
+- **Turtle Pyramiding Logic:** Automated multi-unit position scaling up to 3 units on favorable $0.5 \times ATR$ trends with baseline break-even risk adjustment.
+- **Funding Rate Guardrails:** Real-time derivative drag protection halting trades during extreme positive or negative funding environments.
+- **Circuit Breaker Automation:** Automated 24-hour trade pause upon encountering 3 consecutive stop-losses to mitigate adverse market regimes.
+- **Persistent State Storage:** ACID-compliant SQLite local database tracking active positions, execution states, and historical trade audits across container restarts.
+- **God-Level HTML Email Alerts:** Real-time, styled responsive email reporting covering trade fills, entry/exit metrics, duration, net PnL, and ROI.
+- **Dockerized Cloud Deployment:** Fully containerized architecture running 24/7 on AWS EC2 with automatic volume mounts and restart policies.
 
 ## Architecture
-`mermaid
+```mermaid
 graph TD
     A[Market Data] --> B[Feature Engineering]
     B --> C[Regime Detection]
     C --> D[Strategy Engine]
-    D --> E[Signal Validation]
-    E --> F[Risk Engine]
-    F --> G[Position Sizing]
+    D --> E[Signal Validation: EMA200 / ADX / Volume]
+    E --> F[Risk Engine: Funding & Circuit Breaker]
+    F --> G[Position Sizing & Pyramiding]
     G --> H[Execution Engine]
-    H --> I[Portfolio / Position Management]
-    I --> J[Monitoring / Audit]
-``n
-## Quick Start
-`powershell
-python -m venv venv
-venv\Scripts\Activate.ps1
-pip install -e .
-copy .env.example .env
-pytest
-python scripts/run_bot.py
-`
-
-## AI Governance, Valuation & Analytics Advisory
-- **Frameworks & Governance:** Aligned with NIST AI RMF and ISO/IEC 42001 standards for model risk governance and internal control frameworks (COSO/ICFR).
-- **Controls & Input Validation:** Automated data input integrity validation, distribution outlier checks, and Human-in-the-Loop (HITL) review gates for execution controls.
-- **Drift & Performance Monitoring:** Two-sample Kolmogorov-Smirnov (KS) hypothesis testing and quantitative regression analysis to assess concept drift and year-over-year performance stability.
-- **Valuation & Tail-Risk Metrics:** Quantitative valuation calculations covering annualized volatility, drawdown risk profiles, and substantive procedures for financial time-series integrity.
-- **Regulatory & Cloud Landscape:** Designed considering EU AI Act risk tiers and tested against simulated Azure ML / cloud platform evaluation pipelines for agentic and RAG-based systems.
-
-- **Cloud ML & RAG Architecture:** Evaluated deployment configs for Cloud ML Platforms (AWS SageMaker, Azure ML, GCP Vertex AI) and integrated retrieval verification checks for Agentic / RAG-based systems.
-
-- **Model Validation & AI Risk Suite:** Systematic model robustness benchmarking across scikit-learn and TensorFlow artifacts, active KPI monitoring controls, and governance evaluation for Generative AI, LLMs, and RAG-based systems.
+    H --> I[SQLite Persistence & Chandelier ATR Ratchet]
+    I --> J[Monitoring / SMTP HTML Audit Dispatch]
